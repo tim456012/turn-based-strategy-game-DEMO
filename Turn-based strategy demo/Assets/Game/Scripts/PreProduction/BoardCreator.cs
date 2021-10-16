@@ -146,13 +146,13 @@ public class BoardCreator : MonoBehaviour
         for(int i = transform.childCount - 1; i >= 0; --i)
         {
             DestroyImmediate(transform.GetChild(i).gameObject);
-            tiles.Clear();
         }
+        tiles.Clear();
     }
 
     public void Save()
     {
-        string filePath = Application.dataPath + "/Resources/Levels";
+        string filePath = Application.dataPath + "/Game/Resources/Levels";
         if (!Directory.Exists(filePath))
         {
             CreateSaveDirectory();
@@ -164,21 +164,21 @@ public class BoardCreator : MonoBehaviour
             board.tiles.Add(new Vector3(t.pos.x, t.height, t.pos.y));
         }
 
-        string fileName = string.Format("Assets/Resources/Levels/{1}.asset", filePath, name);
+        string fileName = string.Format("Assets/Game/Resources/Levels/{1}.asset", filePath, name);
         AssetDatabase.CreateAsset(board, fileName);
     }
 
     internal void CreateSaveDirectory()
     {
-        string filePath = Application.dataPath + "/Resources";
+        string filePath = Application.dataPath + "/Game/Resources";
         if(!Directory.Exists(filePath))
         {
-            AssetDatabase.CreateFolder("Assets", "Resources");
+            AssetDatabase.CreateFolder("Assets/Game", "Resources");
         }
         filePath += "/Levels";
         if (!Directory.Exists(filePath))
         {
-            AssetDatabase.CreateFolder("Assets/Resources", "Levels");     
+            AssetDatabase.CreateFolder("Assets/Game/Resources", "Levels");     
         }
         AssetDatabase.Refresh();
     }
