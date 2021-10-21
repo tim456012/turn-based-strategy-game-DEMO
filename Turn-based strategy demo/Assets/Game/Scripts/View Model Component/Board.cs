@@ -7,6 +7,9 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject tilePrefab;
     public Dictionary<Point, Tile> tiles = new Dictionary<Point, Tile>();
 
+    internal Color selectedTileColor = new Color(0, 1, 1, 1);
+    internal Color defaultTileColor = new Color(1, 1, 1, 1);
+
     public void Load (LevelData data)
     {
         for (int i = 0; i < data.tiles.Count; ++i)
@@ -58,12 +61,38 @@ public class Board : MonoBehaviour
                     retValue.Add(next);
                 }
             }
+
+            if(checkNow.Count == 0)
+            {
+                SwapReference(ref checkNow, ref checkNext);
+            }
         }
 
         return retValue;
     }
 
-    void ClearSearch()
+    public Tile GetTile(Point p)
+    {
+        return tiles.ContainsKey(p) ? tiles[p] : null;
+    }
+
+    public void SelectTiles(List<Tile> tiles)
+    {
+        for(int i = tiles.Count - 1; i>=0; --i)
+        {
+            tiles[i].GetComponent<Renderer>().material.SetColor("_Color", selectedTileColor);
+        }
+    }
+
+    public void DeSelectTiles(List<Tile> tiles)
+    {
+        for(int i = tiles.Count - 1; i >=0; --i)
+        {
+            tiles[i].GetComponent<Renderer>().material.SetColor("_Color", defaultTileColor);
+        }
+    }
+
+    private void ClearSearch()
     {
         foreach(Tile t in tiles.Values)
         {
@@ -72,9 +101,13 @@ public class Board : MonoBehaviour
         }
     }
 
-    public Tile GetTile (Point p)
+    private void SwapReference(ref Queue<Tile> a, ref Queue<Tile> b)
     {
-        return tiles.ContainsKey(p) ? tiles[p] : null;
+        Queue<Tile> temp = a;
+        a = b;
+        b = temp;
     }
+
+
 }
 
