@@ -69,7 +69,7 @@ public class InputController : MonoBehaviour
             else
             {
                 _hold = false;
-                _next = 0;
+                _next = 0f;
             }
 
             return retValue;
