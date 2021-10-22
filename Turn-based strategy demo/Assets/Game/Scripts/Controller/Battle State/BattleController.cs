@@ -9,6 +9,10 @@ public class BattleController : StateMachine
     public LevelData levelData;
     public Transform tileSelectionIndicator;
     public Point pos;
+    
+    public GameObject heroPerfab;
+    public Unit unit;
+    public Tile currentTile { get { return board.GetTile(pos); } }
 
     // Start is called before the first frame update
     void Start()
