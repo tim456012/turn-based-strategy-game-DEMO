@@ -203,6 +203,8 @@ MonoBehaviour:
   pos:
     x: 0
     y: 0
+  heroPerfab: {fileID: 4678623976772059821, guid: 3513a0967a14b9548a2eed25e5a3c8d0, type: 3}
+  currentUnit: {fileID: 0}
 --- !u!4 &491448549
 Transform:
   m_ObjectHideFlags: 0

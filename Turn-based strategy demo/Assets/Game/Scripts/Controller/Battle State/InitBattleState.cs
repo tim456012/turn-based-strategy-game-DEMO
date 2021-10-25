@@ -15,8 +15,9 @@ public class InitBattleState : BattleState
         board.Load(levelData);
         Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
         SelectTile(p);
+        SpawnTestUnit();
         yield return null;
-        owner.ChangeState<MoveTargetState>();
+        owner.ChangeState<SelectUnitState>();
     }
 
     void SpawnTestUnit()

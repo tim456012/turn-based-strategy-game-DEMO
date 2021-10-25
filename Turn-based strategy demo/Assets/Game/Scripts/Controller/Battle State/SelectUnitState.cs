@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller.Battle_State
+public class SelectUnitState : BattleState
 {
-    public class SelectUnitState : MonoBehaviour
+    protected override void OnMove(object sender, InfoEventArgs<Point> e)
     {
+        SelectTile(e.info + pos);
+    }
 
-        // Use this for initialization
-        void Start()
+    protected override void OnFire(object sender, InfoEventArgs<int> e)
+    {
+        GameObject content = owner.currentTile.content;
+        if(content != null)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            owner.currentUnit = content.GetComponent<Unit>();
+            owner.ChangeState<MoveTargetState>();
         }
     }
 }

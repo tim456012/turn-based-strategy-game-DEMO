@@ -11,7 +11,7 @@ public class BattleController : StateMachine
     public Point pos;
     
     public GameObject heroPerfab;
-    public Unit unit;
+    public Unit currentUnit;
     public Tile currentTile { get { return board.GetTile(pos); } }
 
     // Start is called before the first frame update
