@@ -15,7 +15,7 @@ public struct Point
 
     public static Point operator +(Point a, Point b)
     {
-        return new Point(a.x + b.x, a.y + a.y);
+        return new Point(a.x + b.x, a.y + b.y);
     }
 
     public static Point operator -(Point p1, Point p2)
@@ -45,7 +45,7 @@ public struct Point
 
     public bool Equals(Point p)
     {
-        return x == p.x && y == p.x;
+        return x == p.x && y == p.y;
     }
 
     public override int GetHashCode()

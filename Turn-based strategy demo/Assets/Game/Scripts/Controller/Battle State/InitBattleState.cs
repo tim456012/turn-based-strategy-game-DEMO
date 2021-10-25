@@ -15,16 +15,16 @@ public class InitBattleState : BattleState
         board.Load(levelData);
         Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
         SelectTile(p);
-        SpawnTestUnit();
+        SpawnTestUnits();
         yield return null;
         owner.ChangeState<SelectUnitState>();
     }
 
-    void SpawnTestUnit()
+    void SpawnTestUnits()
     {
         System.Type[] components = new System.Type[] { typeof(WalkMovement), typeof(FlyMovement), typeof(TeleportMovement) };
 
-        for(int i =0; i<3; i++)
+        for(int i = 0; i < 3; ++i)
         {
             GameObject instance = Instantiate(owner.heroPerfab) as GameObject;
 

@@ -6,8 +6,8 @@ using UnityEditor;
 
 public class BoardCreator : MonoBehaviour
 {
-    [SerializeField] internal GameObject tileViewPrefab;
-    [SerializeField] internal GameObject tileSelectionIndicatorPrefab;
+    [SerializeField] private GameObject tileViewPrefab;
+    [SerializeField] private GameObject tileSelectionIndicatorPrefab;
 
     internal Transform marker
     {
@@ -25,13 +25,13 @@ public class BoardCreator : MonoBehaviour
 
     Dictionary<Point, Tile> tiles = new Dictionary<Point, Tile>();
 
-    [SerializeField] internal int width = 10;
-    [SerializeField] internal int depth = 10;
-    [SerializeField] internal int height = 8;
+    [SerializeField] private int width = 10;
+    [SerializeField] private int depth = 10;
+    [SerializeField] private int height = 8;
 
-    [SerializeField] internal Point pos;
+    [SerializeField] private Point pos;
 
-    [SerializeField] internal LevelData levelData;
+    [SerializeField] private LevelData levelData;
 
     public void GrowArea()
     {

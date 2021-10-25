@@ -7,8 +7,16 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject tilePrefab;
     public Dictionary<Point, Tile> tiles = new Dictionary<Point, Tile>();
 
-    internal Color selectedTileColor = new Color(0, 1, 1, 1);
-    internal Color defaultTileColor = new Color(1, 1, 1, 1);
+    private Color selectedTileColor = new Color(0, 1, 1, 1);
+    private Color defaultTileColor = new Color(1, 1, 1, 1);
+
+    private Point[] dirs = new Point[4]
+    {
+            new Point(0, 1),
+            new Point(0, -1),
+            new Point(1, 0),
+            new Point(-1, 0)
+    };
 
     public void Load (LevelData data)
     {
@@ -32,14 +40,6 @@ public class Board : MonoBehaviour
 
         start.distance = 0;
         checkNow.Enqueue(start);
-
-        Point[] dirs = new Point[4]
-        {
-            new Point(0, 1),
-            new Point(0, -1),
-            new Point(1, 0),
-            new Point(-1, 0)
-        };
 
         while(checkNow.Count > 0)
         {
