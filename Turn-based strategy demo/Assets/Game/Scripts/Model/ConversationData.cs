@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ConversationData : ScriptableObject
 {
-    public List<SpeakData> list;
+    public List<SpeakerData> list;
 }

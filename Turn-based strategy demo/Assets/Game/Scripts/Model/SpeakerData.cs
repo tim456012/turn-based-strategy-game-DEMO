@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SpeakData
+public class SpeakerData
 {
     public List<string> messages;
     public Sprite speaker;
