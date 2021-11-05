@@ -105,7 +105,7 @@ public class Panel : MonoBehaviour
             this.parentAnchor = parentAnchor;
         }
 
-        public Position(string name, TextAnchor myAnchor, TextAnchor parentAnchor, Vector2 offset) : this(name)
+        public Position(string name, TextAnchor myAnchor, TextAnchor parentAnchor, Vector2 offset) : this(name, myAnchor, parentAnchor)
         {
             this.offset = offset;
         }

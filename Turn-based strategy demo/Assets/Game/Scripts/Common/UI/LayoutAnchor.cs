@@ -11,7 +11,7 @@ public class LayoutAnchor : MonoBehaviour
     private void Awake()
     {
         myRT = transform as RectTransform;
-        parentRT = transform as RectTransform;
+        parentRT = transform.parent as RectTransform;
         if(parentRT == null)
         {
             Debug.LogError("The component requires a RectTransform parent to work.", gameObject);
