@@ -30,9 +30,9 @@ public class PoolDemo : MonoBehaviour
         if (GUI.Button(new Rect(10, 90, 100, 30), "Dequeue"))
         {
             Poolable obj = GameObjectPoolController.Dequeue(PoolKey);
-            float x = Random.Range(-10f, 10f);
-            float y = Random.Range(0f, 5f);
-            float z = Random.Range(0f, 10f);
+            float x = Random.Range(-10, 10);
+            float y = Random.Range(0, 5);
+            float z = Random.Range(0, 10);
             obj.transform.position = new Vector3(x, y, z);
             obj.gameObject.SetActive(true);
             instances.Add(obj);
