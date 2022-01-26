@@ -13,11 +13,11 @@ public class GameObjectPoolController : MonoBehaviour
 {
     #region Fields / Properties
 
-    public static GameObjectPoolController Instance
+    static GameObjectPoolController Instance
     {
         get
         {
-            if (Instance == null)
+            if (instance == null)
             {
                 CreateSharedInstance();
             }
