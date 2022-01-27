@@ -6,11 +6,18 @@ public abstract class BattleState : State
 {
     protected BattleController owner;
 
-    public CameraRig cameraRig { get { return owner.cameraRig; } }
-    public Board board { get { return owner.board; } }
-    public LevelData levelData { get { return owner.levelData; } }
-    public Transform tileSelectionIndicator {  get { return owner.tileSelectionIndicator; } }
-    public Point pos { get { return owner.pos; } set { owner.pos = value; } }
+    public CameraRig cameraRig => owner.cameraRig;
+    public Board board => owner.board;
+    public LevelData levelData => owner.levelData;
+    public Transform tileSelectionIndicator => owner.tileSelectionIndicator;
+    public Point pos 
+    { 
+        get => owner.pos;
+        set => owner.pos = value;
+    }
+    public AbilityMenuPanelController abilityMenuPanelController => owner.abilityMenuPanelController;
+    public Turn turn => owner.turn;
+    public List<Unit> units => owner.units;
 
     protected virtual void Awake()
     {

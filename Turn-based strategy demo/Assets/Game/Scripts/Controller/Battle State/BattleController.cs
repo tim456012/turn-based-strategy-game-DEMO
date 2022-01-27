@@ -11,8 +11,10 @@ public class BattleController : StateMachine
     public Point pos;
     
     public GameObject heroPerfab;
-    public Unit currentUnit;
     public Tile currentTile { get { return board.GetTile(pos); } }
+    public AbilityMenuPanelController abilityMenuPanelController;
+    public Turn turn = new Turn();
+    public List<Unit> units = new();
 
     // Start is called before the first frame update
     void Start()

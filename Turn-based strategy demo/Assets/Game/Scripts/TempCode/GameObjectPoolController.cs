@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The information of objects in the object pool.
+/// </summary>
 public class PoolData
 {
     public GameObject prefab;
@@ -9,11 +12,14 @@ public class PoolData
     public Queue<Poolable> pool;
 }
 
+/// <summary>
+/// This controller will hold a PoolData dictionary as a object pool to process the instantiation.
+/// </summary>
 public class GameObjectPoolController : MonoBehaviour
 {
     #region Fields / Properties
 
-    static GameObjectPoolController Instance
+    private static GameObjectPoolController Instance
     {
         get
         {
@@ -25,9 +31,8 @@ public class GameObjectPoolController : MonoBehaviour
             return instance;
         }
     }
-
     private static GameObjectPoolController instance;
-    private static Dictionary<string, PoolData> pools = new Dictionary<string, PoolData>();
+    private static readonly Dictionary<string, PoolData> pools = new();
 
     #endregion
 
@@ -49,6 +54,11 @@ public class GameObjectPoolController : MonoBehaviour
 
     #region Public
 
+    /// <summary>
+    /// Modify the max amount of specific objects in the dictionary. 
+    /// </summary>
+    /// <param name="key">The name (key) of the objects in the dictionary.</param>
+    /// <param name="maxCount">The maximum number of GameObjects that need to keep in the pool.</param>
     public static void SetMaxCount(string key, int maxCount)
     {
         if (!pools.ContainsKey(key))
@@ -57,6 +67,14 @@ public class GameObjectPoolController : MonoBehaviour
         data.maxCount = maxCount;
     }
 
+    /// <summary>
+    /// Specify what name (key) will map to the specific GameObjects and add it to the dictionary.
+    /// </summary>
+    /// <param name="key">The name (key) of the objects in the dictionary that you want.</param>
+    /// <param name="prefab">The GameObjects that you want to place on the object pool.</param>
+    /// <param name="prePopulate">The specific number of prefab that you want to pre-create them in the object pool.</param>
+    /// <param name="maxCount">The maximum number of prefab that can keep in the object pool.</param>
+    /// <returns>bool</returns>
     public static bool AddEntry(string key, GameObject prefab, int prePopulate, int maxCount)
     {
         if(pools.ContainsKey(key))
@@ -78,6 +96,10 @@ public class GameObjectPoolController : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Clear and remove the specific GameObjects in the object pools.
+    /// </summary>
+    /// <param name="key">The name (key) of the objects in the dictionary.</param>
     public static void ClearEntry(string key)
     {
         if (!pools.ContainsKey(key))
@@ -92,6 +114,10 @@ public class GameObjectPoolController : MonoBehaviour
         pools.Remove(key);
     }
 
+    /// <summary>
+    /// Place (Enqueue) the GameObjects back from the game world to the object pools.
+    /// </summary>
+    /// <param name="sender">The GameObject that you want to send to the object pool.</param>
     public static void Enqueue(Poolable sender)
     {
         if (sender == null || sender.isPooled || !pools.ContainsKey(sender.key))
@@ -110,6 +136,11 @@ public class GameObjectPoolController : MonoBehaviour
         sender.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Get (Dequeue) the GameObjects from the object pools to the game world.
+    /// </summary>
+    /// <param name="key">The name (key) of the objects in the dictionary.</param>
+    /// <returns>GameObject</returns>
     public static Poolable Dequeue(string key)
     {
         if (!pools.ContainsKey(key))

@@ -7,7 +7,7 @@ public class PoolDemo : MonoBehaviour
 {
     private const string PoolKey = "Demo.Prefab";
     [SerializeField] private GameObject prefab;
-    private List<Poolable> instances = new List<Poolable>();
+    private readonly List<Poolable> instances = new();
 
     private void Start()
     {
