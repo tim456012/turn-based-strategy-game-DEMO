@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -462,6 +462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile Selection Indicator
       objectReference: {fileID: 0}
+    - target: {fileID: 5508022021884214099, guid: 8e052a8fe41d5a44ea117dd9c2a2545d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e052a8fe41d5a44ea117dd9c2a2545d, type: 3}
 --- !u!4 &970460445 stripped
@@ -794,6 +798,10 @@ PrefabInstance:
     - target: {fileID: 8557584693548906329, guid: f3ef4d9d86d2a44548031e89658dff12, type: 3}
       propertyPath: m_Name
       value: Ability Menu Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557584693548906329, guid: f3ef4d9d86d2a44548031e89658dff12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8557584693548906334, guid: f3ef4d9d86d2a44548031e89658dff12, type: 3}
       propertyPath: m_RootOrder
